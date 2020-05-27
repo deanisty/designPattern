@@ -1,7 +1,7 @@
 package design.singleton;
 
 public class Singleton3 {
-    // 懒汉模式
+    // 线程安全版本
     private static Singleton3 instance = null;
 
     // 私有的构造方法
@@ -9,6 +9,7 @@ public class Singleton3 {
     }
 
     // 加锁 锁住当前对象
+    // synchronized实现原理：https://www.cnblogs.com/john8169/p/9780494.html
     public static synchronized Singleton3 getInstance() {
         if (instance == null) {
             // try {
