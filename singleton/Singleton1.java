@@ -5,6 +5,7 @@ public class Singleton1
     // 饿汉模式
     private static Singleton1 instance = new Singleton1();    
 
+    // 私有构造方法
     private Singleton1() {}
 
     // 静态初始化方法
