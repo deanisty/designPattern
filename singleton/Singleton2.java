@@ -16,6 +16,7 @@ public class Singleton2 {
             // } catch (InterruptedException e) {
             //     e.printStackTrace();
             // }
+
             instance = new Singleton2();
         }
 
@@ -24,7 +25,7 @@ public class Singleton2 {
 
     public String toString() 
     {
-        return getClass().getSimpleName() + '@' + Integer.toHexString(getClass().hashCode());
+        return getClass().getSimpleName() + '@' + Integer.toHexString(this.hashCode());
     }
 
     // 实例方法

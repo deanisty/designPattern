@@ -14,31 +14,31 @@ public class SingletonTest {
         /****************** 懒汉模式 **************/
         // Singleton2 s2 = Singleton2.getInstance();
         // s2.SayHi();
-
+        
         // 多线程测试
-        // for(int i = 1; i < 10; i ++) {
-        //     new Thread(new Runnable() {
-
-        //         @Override
-        //         public void run() {
-        //             Singleton2 s2 = Singleton2.getInstance();
-        //             System.out.println(s2.toString());
-        //         }
-                
-        //     }).start();
-        // }
-
-        /****************** 多线程安全模式 **************/
-        for(int i = 1; i < 100 ; i ++) {
-            new Thread(new Runnable(){
+        for(int i = 1; i < 20; i ++) {
+            new Thread(new Runnable() {
 
                 @Override
                 public void run() {
-                    Singleton3 s3 = Singleton3.getInstance();
-                    System.out.println(s3);
+                    Singleton2 s2 = Singleton2.getInstance();
+                    System.out.println(s2.toString());
                 }
+             
             }).start();
         }
+
+        /****************** 多线程安全模式 **************/
+//         for(int i = 1; i < 100 ; i ++) {
+//             new Thread(new Runnable(){
+// 
+//                 @Override
+//                 public void run() {
+//                     Singleton3 s3 = Singleton3.getInstance();
+//                     System.out.println(s3);
+//                 }
+//             }).start();
+//         }
 
         // TODO 减小锁的粒度
     }
