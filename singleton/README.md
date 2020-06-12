@@ -60,7 +60,7 @@ public class Singleton3 {
     private Singleton3() {
     }
 
-    // 加锁 锁住当前对象
+    // 加锁 锁住当前类的 .class 对象
     public static synchronized Singleton3 getInstance() {
         if (instance == null) {
             instance = new Singleton3();
@@ -72,10 +72,48 @@ public class Singleton3 {
 ```
 
 
+#### 同步代码块模式
+
+```java
+/**
+ * 同步代码块
+ * Double Check Lock
+ */
+public class Singleton4 {
+    // 线程安全版本 memory reordering issue
+    private static Singleton4 instance = null;
+    private static Object lock = new Object(); // 提供锁的对象
+    // 私有的构造方法
+    private Singleton4() {
+    }
+
+    // 锁住代码块 DCL
+    public static Singleton4 getInstance() {
+        if (instance == null) {
+            synchronized(lock) {
+                if (instance == null) {
+                    instance = new Singleton4();
+                }
+            }
+        }
+
+        return instance;
+    }
+}
+```
+
+
+#### volatile
+
+
+
+
+
 
 ##### Read More
 
-Synchronized
+* https://docs.oracle.com/javase/tutorial/essential/concurrency/locksync.html
+* https://www.internalpointers.com/post/understanding-memory-ordering
 * https://www.cnblogs.com/john8169/p/9780494.html
 * https://blog.csdn.net/javazejian/article/details/72828483
 
