@@ -1,22 +1,25 @@
 package design.singleton;
 
-public class Singleton3 {
+/**
+ * 同步代码块
+ * Double Check Lock
+ */
+public class Singleton4 {
     // 线程安全版本
-    private static Singleton3 instance = null;
+    private static Singleton4 instance = null;
 
     // 私有的构造方法
-    private Singleton3() {
+    private Singleton4() {
     }
 
-    // 加锁 锁住当前对象
-    public static synchronized Singleton3 getInstance() {
+    // 锁住代码块
+    public static Singleton4 getInstance() {
         if (instance == null) {
-            // try {
-            //     Thread.sleep(2);
-            // } catch (InterruptedException e) {
-            //     e.printStackTrace();
-            // }
-            instance = new Singleton3();
+            synchronized(Singleton4.class) {
+                if (instance == null) {
+                    instance = new Singleton4();
+                }
+            }
         }
 
         return instance;

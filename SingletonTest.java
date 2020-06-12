@@ -2,6 +2,7 @@ package design;
 import design.singleton.Singleton1;
 import design.singleton.Singleton2;
 import design.singleton.Singleton3;
+import design.singleton.Singleton4;
 
 public class SingletonTest {
     
@@ -15,21 +16,21 @@ public class SingletonTest {
         // Singleton2 s2 = Singleton2.getInstance();
         // s2.SayHi();
         
-        // 多线程测试
-        for(int i = 1; i < 20; i ++) {
-            new Thread(new Runnable() {
+        /****************** 多线程测试 **************/
+        // for(int i = 1; i < 10; i ++) {
+        //     new Thread(new Runnable() {
 
-                @Override
-                public void run() {
-                    Singleton2 s2 = Singleton2.getInstance();
-                    System.out.println(s2.toString());
-                }
-             
-            }).start();
-        }
+        //         @Override
+        //         public void run() {
+        //             Singleton2 s2 = Singleton2.getInstance();
+        //             System.out.println(Thread.currentThread().getId() + " " + s2);
+        //         }
+        //      
+        //     }).start();
+        // }
 
-        /****************** 多线程安全模式 **************/
-//         for(int i = 1; i < 100 ; i ++) {
+        /****************** 多线程安全 - 方法锁 **************/
+//         for(int i = 1; i < 10 ; i ++) {
 //             new Thread(new Runnable(){
 // 
 //                 @Override
@@ -40,7 +41,17 @@ public class SingletonTest {
 //             }).start();
 //         }
 
-        // TODO 减小锁的粒度
+        /****************** 多线程安全 - 代码块锁 **************/
+//        for(int i = 1; i < 10; i++ ) {
+//            new Thread(new Runnable() {
+//
+//                public void run() {
+//                    Singleton4 s4 = Singleton4.getInstance();
+//                    System.out.println(s4);
+//                }
+//            }).start();
+//        }
+
     }
 }
 
@@ -48,4 +59,8 @@ public class SingletonTest {
  * ======windows=======
  * 编译: javac -encoding utf-8 -d .\classes\ .\design\SingletonTest.java
  * 运行: java -classpath .\classes\ design.SingletonTest
+ *
+ * ======linux/mac=======
+ * 编译: javac -d ./classes design/SingletonTest.java
+ * 运行: java -classpath classes  design.SingletonTest
  */
