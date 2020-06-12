@@ -42,15 +42,15 @@ public class SingletonTest {
 //         }
 
         /****************** 多线程安全 - 代码块锁 **************/
-//        for(int i = 1; i < 10; i++ ) {
-//            new Thread(new Runnable() {
-//
-//                public void run() {
-//                    Singleton4 s4 = Singleton4.getInstance();
-//                    System.out.println(s4);
-//                }
-//            }).start();
-//        }
+        for(int i = 1; i < 10; i++ ) {
+            new Thread(new Runnable() {
+
+                public void run() {
+                    Singleton4 s4 = Singleton4.getInstance();
+                    System.out.println(s4);
+                }
+            }).start();
+        }
 
     }
 }
