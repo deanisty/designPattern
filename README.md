@@ -1,5 +1,17 @@
 # designPattern
 
+### 6项基本原则
+
+* 单一职责原则 (Single Responsibility Principle) `就一个类而言， 应该仅有一个引起它变化的原因`
+* 开放-关闭原则 (Open-Closed Principle) `类、模块、函数等应该是可以拓展的，但是不可修改`
+* 里氏替换原则 (Liskov Substitution Principle) `所有引用基类的地方必须能透明地使用其子类的对象`
+* 依赖倒转原则 (Dependence Inversion Principle) `高层模块不应该依赖于低层模块，两者都应该依赖于抽象。抽象不应该依赖于细节，细节应该依赖于抽象`
+* 接口隔离原则 (Interface Segregation Principle) `一个类对另一个类的依赖应该建立在最小的接口上`
+* 迪米特法则（Law Of Demeter）`通过引入一个合理的第三者降低现有对象之间的耦合度`
+
+
+### 23种设计模式
+
 ##### 创建型
 
 * [单例模式](singleton/)
@@ -33,5 +45,5 @@
 * 责任链模式：将请求的发送者和接收者解耦，使的多个对象都有处理这个请求的机会
 * 迭代器模式：一种遍历访问聚合对象中各个元素的方法，不暴露该对象的内部结构
 
-#### 框架图
+### 框架图
 ![diagram](Design_Pattern_Relationships.jpeg)
