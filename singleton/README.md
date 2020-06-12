@@ -105,10 +105,66 @@ public class Singleton4 {
 
 #### volatile
 
+```java
+    ...
+    // volatile 关键字阻止编译器和cpu指令重排
+    private static volatile Singleton4 instance = null;
+    ...
+```
+
+#### 静态私有内部类
+
+```java
+// 线程安全 并且 无资源浪费
+public class Singleton6 
+{
+    private Singleton6() {}
+
+    // 私有内部静态类
+    private static class Singleton6Hepler()
+    {
+        private static final Singleton6 instance = new Singleton6();
+    }
+
+    // 只有当调用 getInstance 方法时内部类才会被加载到内存
+    public static Singleton6 getInstance()
+    {
+        return Singleton6Hepler.instance;
+    }
+}
+
+```
+
+
+` java的反射机制可以破坏上面所有的单例模式实现 `
+
+> https://www.journaldev.com/1377/java-singleton-design-pattern-best-practices-examples#eager-initialization
 
 
 
 
+#### 枚举单例
+
+```java
+// 可以克服反射机制的破坏
+public enum Singleton7 
+{
+    instance;
+
+    // 枚举全局可访问  
+    // 并且jvm保证枚举只会被初始化一次
+    // 无法支持懒加载
+    public static void sayHi()
+    {
+        System.out.println("Enum is saying Hi");
+    }
+}
+
+```
+
+` 反序列化破坏单例 `
+
+当一个单例类被序列化然后再反序列化，会生成一个完全不同的类的实例，避免这个问题的方法，可以使用`readResolve`方法
 
 ##### Read More
 

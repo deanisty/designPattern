@@ -3,6 +3,7 @@ import design.singleton.Singleton1;
 import design.singleton.Singleton2;
 import design.singleton.Singleton3;
 import design.singleton.Singleton4;
+import design.singleton.Singleton5;
 
 public class SingletonTest {
     
@@ -46,8 +47,8 @@ public class SingletonTest {
             new Thread(new Runnable() {
 
                 public void run() {
-                    Singleton4 s4 = Singleton4.getInstance();
-                    System.out.println(s4);
+                    Singleton5 s5 = Singleton5.getInstance();
+                    System.out.println(s5);
                 }
             }).start();
         }
