@@ -9,9 +9,6 @@ public class Singleton3 {
     }
 
     // 加锁 锁住当前对象
-    // synchronized实现原理：
-    //   https://www.cnblogs.com/john8169/p/9780494.html
-    //   https://blog.csdn.net/javazejian/article/details/72828483
     public static synchronized Singleton3 getInstance() {
         if (instance == null) {
             // try {
